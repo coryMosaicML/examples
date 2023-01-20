@@ -175,7 +175,9 @@ def main(config):
                             drop_rate=0.1)
         ]
     else:
-        algorithms = None
+        algorithms = [
+            ChannelsLast(),
+        ]
     print('Built algorithm recipes\n')
 
     loggers = [
