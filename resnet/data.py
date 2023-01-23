@@ -31,10 +31,10 @@ class StreamingImageNet(StreamingDataset, VisionDataset):
         shuffle (bool): Whether to iterate over the samples in randomized order.
         transform (callable, optional): A function/transform that takes in an image and returns a transformed version.
             Default: ``None``.
-        prefetch (int, optional): Target number of samples remaining to prefetch while iterating.
+        predownload (int, optional): Target number of samples remaining to predownload while iterating.
             Default: ``100_000``.
-        retry (int, optional): Number of download re-attempts before giving up. Defaults to ``2``.
-        timeout (float, optional): Number of seconds to wait for a shard to download before raising
+        download_retry (int, optional): Number of download re-attempts before giving up. Defaults to ``2``.
+        download_timeout (float, optional): Number of seconds to wait for a shard to download before raising
             an exception. Default: 120 seconds.
         batch_size (int, optional): The batch size that will be used on each device's DataLoader.
             Default: ``None``.
@@ -46,9 +46,9 @@ class StreamingImageNet(StreamingDataset, VisionDataset):
                  split: Optional[str],
                  shuffle: bool,
                  transform: Optional[Callable] = None,
-                 prefetch: Optional[int] = 100_000,
-                 retry: Optional[int] = 2,
-                 timeout: Optional[float] = 120,
+                 predownload: Optional[int] = 100_000,
+                 download_retry: Optional[int] = 2,
+                 download_timeout: Optional[float] = 120,
                  batch_size: Optional[int] = None) -> None:
 
         if split not in ['train', 'val']:
@@ -61,10 +61,10 @@ class StreamingImageNet(StreamingDataset, VisionDataset):
                          local=local,
                          split=split,
                          shuffle=shuffle,
-                         prefetch=prefetch,
+                         predownload=predownload,
                          keep_zip=False,
-                         retry=retry,
-                         timeout=timeout,
+                         download_retry=download_retry,
+                         download_timeout=download_timeout,
                          hash=None,
                          batch_size=batch_size)
 
