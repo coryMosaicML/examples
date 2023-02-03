@@ -2,7 +2,8 @@
 # Each example subdir has its own `requirements.txt` with extra deps.
 # E.g. to install LLM folder deps, use `pip install -e .[llm]`
 
-mosaicml>=0.12,<0.13
+#mosaicml>=0.12,<0.13
+git+https://github.com/coryMosaicML/composer.git@5769a3fcc1c1b7a005d9a9708cc0130080ddc3d0
 pre-commit>=2.18.1,<3
 pytest>=7.2.1,<8
 pytest_codeblocks>=0.16.1,<0.17
